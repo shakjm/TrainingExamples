@@ -1,0 +1,44 @@
+#File has been written by Kelvin Shak
+#With reference to UDEMY course on Data Science & Machine Learning
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import sklearn.preprocessing as skl
+import os
+
+#Changing Directory to csv file and reading CSV file
+#
+#
+os.chdir('/home/shak/Documents/DataScience/Examples')
+cfile = pd.read_csv('weatherHistory.csv')
+colfile = ['Temperature (C)','Humidity']
+cfile_TH = cfile[colfile]
+
+#Process file based on Temperature and Humidity
+#Plot of scatter of the data to show a rough plot of datasets
+#
+temp_data = cfile_TH['Temperature (C)']
+humid_data = cfile_TH['Humidity']
+
+plt.figure()
+plt.show()
+plt.scatter(temp_data,humid_data)
+
+#Linear Regression Tool
+
+from scipy import stats
+slope,intercept,r,p,stderr = stats.linregress(temp_data,humid_data)
+
+#Finding a line that fits the data
+# y = mx + c
+#
+def line(x) : 
+    return slope*x + intercept
+
+straightline = line(temp_data)
+plt.plot(temp_data,straightline,'r--')
+
+#Printing R square value
+rsquare = r**2
+print('Value of r square is : ', rsquare)
