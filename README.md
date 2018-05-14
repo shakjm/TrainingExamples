@@ -4,12 +4,12 @@ You can use the [editor on GitHub](https://github.com/shakjm/TrainingExamples/ed
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### Projects
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Below are the projects that have been done by me with examples taken from various websites. Data sets obtained have no actual meaning behind them unless stated as it is personally used for learning. Further projects will be done when more knowledge is being obtained. 
 
 ```markdown
-Syntax highlighted code block
+Project list
 
 # Header 1
 ## Header 2
