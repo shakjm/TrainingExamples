@@ -10,7 +10,9 @@ Below are the projects that have been done by me with examples taken from variou
 
 ```markdown
 Project list
-
+1. Linear Regression
+   Linear Regression Exercise on plotting a best fit line on possibilities of correlation of Humidity and other variables. Further results can be simulated using files in weatherLinearRegression with the respective csv file.
+  
 # Header 1
 ## Header 2
 ### Header 3
