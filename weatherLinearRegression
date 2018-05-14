@@ -23,12 +23,15 @@ humid_data = cfile_TH['Humidity']
 
 plt.figure()
 plt.show()
-plt.scatter(temp_data,humid_data)
+plt.title('Graph of Humidity against Temperature')
+plt.ylabel('Temperature')
+plt.xlabel('Humidity')
+plt.scatter(humid_data,temp_data)
 
 #Linear Regression Tool
 
 from scipy import stats
-slope,intercept,r,p,stderr = stats.linregress(temp_data,humid_data)
+slope,intercept,r,p,stderr = stats.linregress(humid_data,temp_data)
 
 #Finding a line that fits the data
 # y = mx + c
@@ -36,9 +39,33 @@ slope,intercept,r,p,stderr = stats.linregress(temp_data,humid_data)
 def line(x) : 
     return slope*x + intercept
 
-straightline = line(temp_data)
-plt.plot(temp_data,straightline,'r--')
+straightline = line(humid_data)
+plt.plot(humid_data,straightline,'r--')
 
 #Printing R square value
 rsquare = r**2
 print('Value of r square is : ', rsquare)
+
+#Relationship between Humidity and Apparent Temperature
+col2 = ['Humidity','Apparent Temperature (C)']
+data2 = cfile[col2]
+humid_data2 = cfile['Humidity']
+app_data2 = cfile['Apparent Temperature (C)']
+
+plt.figure()
+plt.show()
+plt.title('Linear Regression for Humidity Against Apparent Temperature')
+plt.xlabel('Humidity')
+plt.ylabel('Apparent Temperature')
+plt.scatter(humid_data2,app_data2)
+
+slope2,intercept2,r2,p2,stderr2 = stats.linregress(humid_data2,app_data2)
+
+def line2(x):
+    return slope2*x + intercept2
+
+straightline2 = line2(humid_data2)
+plt.plot(humid_data2,straightline2,'b-')
+
+rsquare2 = r2**2
+print('Value of R square for Humidity against Apparent Temperature is : ', rsquare2)
