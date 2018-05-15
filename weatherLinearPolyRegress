@@ -69,3 +69,49 @@ plt.plot(humid_data2,straightline2,'b-')
 
 rsquare2 = r2**2
 print('Value of R square for Humidity against Apparent Temperature is : ', rsquare2)
+
+#############################################################
+#Training and Test                                          #
+#############################################################
+sizedata = np.size(humid_data)
+traindata = int(np.round(0.8*(sizedata)))
+
+humid_data_train = humid_data[:traindata]
+humid_data_test = humid_data[traindata:]
+temp_data_train = temp_data[:traindata]
+temp_data_test = temp_data[traindata:]
+
+
+# Creating an array for training data sets
+# Polynomial function used to train the predictor to understand the values
+# 
+plt.figure()
+plt.show()
+plt.title('Machine training sets')
+plt.scatter(humid_data_train,temp_data_train)
+x = np.array(humid_data_train)
+y = np.array(temp_data_train)
+p4 = np.poly1d(np.polyfit(x,y,8))
+xp = np.linspace(0,1.0,100)
+
+#Know the maximum and minimum value of the x-axis to know what range of polynomial to plot
+# Testing the machine training plot also done with p4 using test data sets
+# Same polynomial equation, different sets of data for x value
+plt.plot(xp,p4(xp),'r-')
+
+testx = np.array(humid_data_test)
+testy = np.array(temp_data_test)
+
+plt.figure()
+plt.show()
+plt.title('Machine Testing sets')
+plt.scatter(humid_data_test,temp_data_test)
+plt.plot(xp,p4(xp),'r-')
+
+from sklearn.metrics import r2_score
+#p4 is y = x^2 + x + c where p4 = y
+#r2_score(y_true,y_pred)
+rscore = r2_score(y,p4(x))
+print('Value of r squared for polynomial of machine training set is :',rscore)
+rscore2 = r2_score(testy,p4(testx))
+print('Value of r squared for polynomial of machine testing set is :',rscore2)
